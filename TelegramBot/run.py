@@ -184,7 +184,8 @@ def process_data(user_data):
     data['commander_phone_number'] = user_data.get('commander_phone_number', None)
 
     url = 'http://51.137.47.10:8080/api/register_user/'
-    res = requests.post(url, data=data)
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    res = requests.post(url, data=data, headers=headers)
 
     logger.info(f'status_code: {res.status_code}, {res.content}')
 
