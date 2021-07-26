@@ -9,20 +9,12 @@ import json
 import cv2
 from imutils.video import VideoStream
 
-if __name__ == '__main__':
-    # construct the argument parser and parse the arguments
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-v", "--video", help="path to the video file")
-    ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
-    args = vars(ap.parse_args())
-    # if the video argument is None, then we are reading from webcam
-    if args.get("video", None) is None:
-        vs = VideoStream(src=0).start()
-        time.sleep(2.0)
 
-    # otherwise, we are reading from a video file
-    else:
-        vs = cv2.VideoCapture(args["video"])
+def movement_detection():
+
+    vs = VideoStream(src=0).start()
+    time.sleep(2.0)
+
     # initialize the first frame in the video stream
     avg = None
     # loop over the frames of the video
@@ -71,5 +63,8 @@ if __name__ == '__main__':
                     print(request_data, type(frame))
                     requests.post(const.SERVER_ENDPOINT, request_data)
     # cleanup the camera and close any open windows
-    vs.stop() if args.get("video", None) is None else vs.release()
-    cv2.destroyAllWindows()
+    vs.stop()
+
+
+if __name__ == '__main__':
+    movement_detection()
