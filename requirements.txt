@@ -1,3 +1,5 @@
 imutils
 opencv-python
 face_recognition
+PyBluez
+requests
