@@ -174,12 +174,17 @@ def bluetooth_device_name(bot, update, user_data):
 
 
 def process_data(user_data):
-    'register_user/<str:personal_number>/<str:commander_id>/<str:phone_number>/<str:mac_bluetooth>/<str:device_name>/'
-    user_data['commander_personal_number'] = user_data.get('commander_personal_number', None)
-    user_data['commander_phone_number'] = user_data.get('commander_phone_number', None)
+    data = dict()
+    data['personal_number'] = user_data['personal_number']
+    data['phone_number'] = user_data['phone_number']
+    data['photo'] = user_data['photo']
+    data['mac_bluetooth'] = user_data['mac_bluetooth']
+    data['device_name'] = user_data['device_name']
+    data['commander_personal_number'] = user_data.get('commander_personal_number', None)
+    data['commander_phone_number'] = user_data.get('commander_phone_number', None)
 
     url = 'http://51.137.47.10:8080/api/register_user'
-    res = requests.post(url, data=user_data)
+    res = requests.post(url, data=data)
 
     logger.info(f'status_code: {res.status_code}')
 
