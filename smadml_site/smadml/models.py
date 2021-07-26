@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Soldier(models.Model):
-    id = models.CharField(max_length=8)
-    commander_id = models.CharField(max_length=8)
+    personal_number = models.CharField(max_length=8)
+    commander_personal_number = models.CharField(max_length=8)
     phone_number = models.CharField(max_length=11)
     mac_bluetooth = models.CharField(max_length=12)
     device_name = models.CharField(max_length=12)

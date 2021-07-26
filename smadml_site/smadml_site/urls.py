@@ -20,7 +20,7 @@ from smadml_site.smadml import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register_user/<str:id>/<str:commander_id>/<str:phone_number>/<str:mac_bluetooth>/<str:device_name>/', views.register_user),
+    path('register_user/<str:personal_number>/<str:commander_personal_number>/<str:phone_number>/<str:mac_bluetooth>/<str:device_name>/', views.register_user),
     path('report_by_image/', views.report_by_image),
     path('report_by_mac/<str:mac>', views.report_by_bluetooth)
 ]

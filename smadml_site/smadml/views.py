@@ -4,19 +4,22 @@ from  .models import Soldier
 from ..smadml.send_report import send_report
 from PIL import Image
 
+from ..Face_REcognition_Model.face_recognition import get_avocado_label
+
 faces_path = "../../smadi_ml"
 # Create your views here.
-def get_id_from_image(image):
-    pass
+def get_id_from_image(image, locations):
+    return get_avocado_label(image, locations)
 
 
 @api_view()
 def report_by_image(request):
     # TODO: Matrix of (r,g,b) tuples + location of face
     image = request.data["image"]
-    id = get_id_from_image(image)
+    locations = request.data["locations"]
+    id = get_id_from_image(image, locations)
     report_by_id(id)
-    pass
+    # TODO: response
 
 
 def get_id_from_mac(mac):
@@ -36,10 +39,11 @@ def report_by_bluetooth(request):
     report_by_id(id)
 
 
-@api_view()
+@api_view(http_method_names=["POST"])
 def register_user(request):
     data = request.data
-    soldier = Soldier(id=data["id"], commander_id=data["commander_id"],
+    soldier = Soldier(personal_number=data["personal_number"],
+                      commander_personal_number=data["commander_personal_number"],
                       phone_number=data["phone_number"],
                       mac_bluetooth=data["mac_bluetooth"],
                       device_name=data["device_name"],
