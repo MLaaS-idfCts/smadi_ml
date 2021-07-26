@@ -34,5 +34,3 @@ def get_avocado_label(arr, locations):
 
         return [format(n) for n in name]
     pass
-
-
