@@ -10,7 +10,7 @@ import cv2
 from imutils.video import VideoStream
 
 
-def movement_detection():
+def movement_detection_loop():
 
     vs = VideoStream(src=0).start()
     time.sleep(2.0)
@@ -18,7 +18,6 @@ def movement_detection():
     # initialize the first frame in the video stream
     avg = None
     # loop over the frames of the video
-    i = 0
     while True:
         # grab the current frame and initialize the occupied/unoccupied
         # text
