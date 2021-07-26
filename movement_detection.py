@@ -3,7 +3,7 @@ import face_recognition
 import argparse
 import imutils
 import time
-import pickle
+import const
 import requests
 import json
 import cv2
@@ -69,7 +69,7 @@ if __name__ == '__main__':
                 for face in faces:
                     request_data = json.dumps((frame.tolist(), [face]))
                     print(request_data, type(frame))
-                    # requests.post('nadav-server', request_data)
+                    requests.post(const.SERVER_ENDPOINT, request_data)
     # cleanup the camera and close any open windows
     vs.stop() if args.get("video", None) is None else vs.release()
     cv2.destroyAllWindows()
