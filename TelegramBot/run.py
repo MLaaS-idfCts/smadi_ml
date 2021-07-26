@@ -39,7 +39,7 @@ def start(bot, update):
 
     update.message.reply_text(
         'Hi! Welcome to Smadi-ML :)\n'
-        'Pleace choose an option: Register or Update',
+        'Pleace choose an option: Register or Delete',
         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return CHOOSE
@@ -70,7 +70,8 @@ def personal_number(bot, update, user_data):
     user_data['personal_number'] = update.message.text
     update.message.reply_text(
         'Thank You. Now, please click to send your phone number',
-        reply_markup=KeyboardButton('Click to send the phone number', request_contact=True))
+        reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton('Click to send the phone number', request_contact=True)]],
+                                         one_time_keyboard=True))
 
     return PHONE_NUMBER
 
