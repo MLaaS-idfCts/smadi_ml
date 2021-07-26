@@ -16,6 +16,7 @@ Send /start to initiate the conversation.
 Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
+import json
 
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler, \
@@ -184,8 +185,8 @@ def process_data(user_data):
     data['commander_phone_number'] = user_data.get('commander_phone_number', None)
 
     url = 'http://51.137.47.10:8080/api/register_user/'
-    headers = {'Content-type': 'application/json'}
-    res = requests.post(url, data=data, headers=headers)
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    res = requests.post(url, data=json.dumps(data), headers=headers)
 
     logger.info(f'status_code: {res.status_code}, {res.content}')
 
