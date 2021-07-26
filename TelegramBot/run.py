@@ -161,7 +161,7 @@ def bluetooth_device_name(bot, update, user_data):
     user = update.message.from_user
     logger.info(f'bluetooth_device_name: {user.first_name}: {update.message.text}')
 
-    user_data['bluetooth_device_name'] = update.message.text
+    user_data['device_name'] = update.message.text
     update.message.reply_text('Please enter your Bluetooth device name')
 
     process_data(user_data)
@@ -177,7 +177,7 @@ def process_data(user_data):
     user_data['commander_personal_number'] = user_data.get('commander_personal_number', None)
     user_data['commander_phone_number'] = user_data.get('commander_phone_number', None)
 
-    url = 'http://10.104.236.26:8080/api/register_user'
+    url = 'http://51.137.47.10:8080/api/register_user'
     res = requests.post(url, data=user_data)
 
     logger.info(f'status_code: {res.status_code}')
