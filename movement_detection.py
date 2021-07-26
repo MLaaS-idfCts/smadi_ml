@@ -1,6 +1,5 @@
 # import the necessary packages
 import face_recognition
-import argparse
 import imutils
 import time
 import const
@@ -22,7 +21,6 @@ def movement_detection_loop():
         # grab the current frame and initialize the occupied/unoccupied
         # text
         frame = vs.read()
-        frame = frame if args.get("video", None) is None else frame[1]
         text = "Unoccupied"
         # if the frame could not be grabbed, then we have reached the end
         # of the video
@@ -49,7 +47,7 @@ def movement_detection_loop():
         # loop over the contours
         for c in cnts:
             # if the contour is too small, ignore it
-            if cv2.contourArea(c) < args["min_area"]:
+            if cv2.contourArea(c) < 500:
                 continue
 
             text = "Occupied"
@@ -66,4 +64,4 @@ def movement_detection_loop():
 
 
 if __name__ == '__main__':
-    movement_detection()
+    movement_detection_loop()
