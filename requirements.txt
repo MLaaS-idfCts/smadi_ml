@@ -2,3 +2,8 @@ imutils
 picamera
 opencv-python
 face_recognition
+django
+django-admin
+django-rest
+Pillow
+pyppeteer
