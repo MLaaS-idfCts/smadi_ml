@@ -186,7 +186,7 @@ def process_data(user_data):
     url = 'http://51.137.47.10:8080/api/register_user/'
     res = requests.post(url, data=data)
 
-    logger.info(f'status_code: {res.status_code}')
+    logger.info(f'status_code: {res.status_code}, {res.content}')
 
 
 def cancel(bot, update):
