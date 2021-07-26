@@ -32,8 +32,7 @@ def get_avocado_label(arr, locations):
             name = ['unknown']
         avocado_names.append(name)
 
-        for n in name:
-            return format(n)
+        return [format(n) for n in name]
     pass
 
 
