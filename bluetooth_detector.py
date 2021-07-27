@@ -49,7 +49,7 @@ def long_scan(timeout=300) -> list:
 
 
 def send_report1_request(mac: str, device_name: str) -> bool:
-    resp = requests.post(url=const.SERVER_ENDPOINT, data={
+    resp = requests.post(url=f'{const.SERVER_ENDPOINT}/api/report_by_mac/', data={
         'mac': mac,
         'device_name': device_name
     })
@@ -66,3 +66,6 @@ def bluetooth_loop():
                 if is_sent:
                     already_sent.add(mac)
 
+
+if __name__ == '__main__':
+    bluetooth_loop()
