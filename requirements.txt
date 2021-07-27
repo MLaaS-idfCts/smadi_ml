@@ -8,4 +8,16 @@ Pillow
 pyppeteer
 PyBluez
 requests
-
+numpy
+opencv-python
+-i https://pypi.org/simple
+appdirs==1.4.4
+certifi==2021.5.30
+charset-normalizer==2.0.3; python_version >= '3'
+colorama==0.4.4; platform_system == 'Windows'
+idna==3.2; python_version >= '3'
+pyee==8.1.0
+pyppeteer==0.2.5
+requests==2.26.0
+tqdm==4.61.2; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'
+urllib3==1.26.6; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_full_version < '4.0.0'

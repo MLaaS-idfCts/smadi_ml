@@ -1,4 +1,4 @@
-"""smadml_site URL Configuration
+"""smadml_site_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -14,13 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from smadml_site.smadml import views
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('register_user/<str:personal_number>/<str:commander_personal_number>/<str:phone_number>/<str:mac_bluetooth>/<str:device_name>/', views.register_user),
-    path('report_by_image/', views.report_by_image),
-    path('report_by_mac/<str:mac>', views.report_by_bluetooth)
+    path('api/', include(("smadml.urls", "smadml"), namespace="smadml")),
 ]

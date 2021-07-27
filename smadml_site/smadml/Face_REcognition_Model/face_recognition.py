@@ -1,7 +1,7 @@
 import face_recognition
 import os
 
-folder_name = 'smadi_ml'
+folder_name = '/tmp/pycharm_project_298/smadi_ml/'
 
 
 def get_avocado_label(arr, locations):
@@ -9,7 +9,7 @@ def get_avocado_label(arr, locations):
     avocado_images = []
     images = os.listdir(folder_name)
     for image in images:
-        img = face_recognition.load_image_file("smadi_ml/" + image)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        img = face_recognition.load_image_file(folder_name + image)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         avocado_face_encoding = face_recognition.face_encodings(img)[0]
         avocado_images.append(avocado_face_encoding)
 
@@ -23,7 +23,7 @@ def get_avocado_label(arr, locations):
     avocado_names = []
     for avocado_encoding in avocado_encodings:
         # See if the face is a match for the known face(s)
-        match = face_recognition.compare_faces(avocado_images, avocado_encodings, tolerance=0.5)
+        match = face_recognition.compare_faces(avocado_images, avocado_encoding, tolerance=0.5)
         name = []
         for loc in range(len(match)):
             if match[loc]:
